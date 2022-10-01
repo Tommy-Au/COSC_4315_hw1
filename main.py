@@ -90,7 +90,7 @@ f = (lambda l: [[l[0], l[1]]] if len(l) == 2 else [[l[0], l[1]]] + f(l[2:]))
 print(f(f_int_arr))
 print(f(f_real_arr))
 
-
+print('hello')
 
 
 
