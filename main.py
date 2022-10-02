@@ -2,6 +2,15 @@ from functools import *
 import sys
 sys.setrecursionlimit(10000)
 
+line = sys.argv[1]
+k, input, output = line.split(';')
+
+k = k[3:]
+input = input[6:]
+output = output[7:]
+
+print(k, input, output)
+
 l_head = lambda l:l[0]
 l_tail = lambda l:l[1:]
 
@@ -96,12 +105,24 @@ print(real_farr)
 #selection sort
 greater_than = lambda a, b: a if a[1] > b[1] else b
 get_max = lambda l: reduce(lambda l1, l2: greater_than(l1, l2), l)
-#removed_max_arr = lambda l, max_arr: list(filter(lambda p: p if p[1] < max_arr[1] else False, l))
-x = get_max(int_farr)
-temp = lambda p: p if p[1] < x[1] else False
-print(x[1])
-print(temp(int_farr[2]))
-#print(removed_max_arr(int_farr, get_max))
+removed_max_arr = lambda l, max_arr: list(filter(lambda p: p if p[1] < max_arr[1] else False, l))
+sorted_by_max = lambda l: get_max(l) if removed_max_arr(l, get_max(l)) == [] else get_max(l) + sorted_by_max(removed_max_arr(l, get_max(l)))
+
+print('\n')
+sorted_int = f(sorted_by_max(int_farr))
+print(sorted_int)
+sorted_real = f(sorted_by_max(real_farr))
+print(sorted_real)
+
+print('integers:')
+l_list_asc = lambda n: [] if n == 0 else l_list_asc(n-1) + [n]
+k = 3
+k_list = l_list_asc(k)
+l_print = lambda l, k_list: list(map(lambda k: print(l[k-1]), k_list))
+l_print(sorted_int, k_list)
+
+print('real:')
+l_print(sorted_real, k_list)
 
 
 
