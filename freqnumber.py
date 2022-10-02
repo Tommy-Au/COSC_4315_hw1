@@ -84,12 +84,12 @@ sorted_real = f(sorted_by_max(real_farr))
 #creates array of ascending up to k to be used for printing real array and int array
 l_list_asc = lambda n: [] if n == 0 else l_list_asc(n-1) + [n]
 k_list = l_list_asc(int(k))
-l_print = lambda l, k_list: list(map(lambda k: print(l[k-1], file=o), k_list))
+l_print = lambda l, k_list: list(map(lambda k: print(l[k-1][0], l[k-1][1], file=o), k_list))
 
 #print anwser
-o.write('integers:')
+o.write('integers:\n')
 l_print(sorted_int, k_list)
-o.write('real:')
+o.write('real:\n')
 l_print(sorted_real, k_list)
 
 
