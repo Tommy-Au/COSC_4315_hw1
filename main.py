@@ -87,10 +87,22 @@ print('frequency int array =', f_int_arr)
 print('frequency real array =', f_real_arr)
 
 f = (lambda l: [[l[0], l[1]]] if len(l) == 2 else [[l[0], l[1]]] + f(l[2:]))
-print(f(f_int_arr))
-print(f(f_real_arr))
+int_farr = f(f_int_arr)
+print(int_farr)
+real_farr = f(f_real_arr)
+print(real_farr)
 
-print('hello')
+
+#selection sort
+greater_than = lambda a, b: a if a[1] > b[1] else b
+get_max = lambda l: reduce(lambda l1, l2: greater_than(l1, l2), l)
+#removed_max_arr = lambda l, max_arr: list(filter(lambda p: p if p[1] < max_arr[1] else False, l))
+x = get_max(int_farr)
+temp = lambda p: p if p[1] < x[1] else False
+print(x[1])
+print(temp(int_farr[2]))
+#print(removed_max_arr(int_farr, get_max))
+
 
 
 
