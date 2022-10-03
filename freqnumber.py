@@ -5,7 +5,7 @@ sys.setrecursionlimit(10000)
 line = sys.argv[1]
 k, input, output = line.split(';')
 
-k = k[2:]
+k = int(k[2:])
 input = input[6:]
 output = output[7:]
 
@@ -81,16 +81,20 @@ sorted_by_max = lambda l: get_max(l) if removed_max_arr(l, get_max(l)) == [] els
 sorted_int = f(sorted_by_max(int_farr))
 sorted_real = f(sorted_by_max(real_farr))
 
+
 #creates array of ascending up to k to be used for printing real array and int array
+new_k = lambda k, l: k if k <= len(l) else len(l)
 l_list_asc = lambda n: [] if n == 0 else l_list_asc(n-1) + [n]
-k_list = l_list_asc(int(k))
+k_list_int = l_list_asc(int(new_k(k,sorted_int)))
+k_list_real = l_list_asc(int(new_k(k,sorted_real)))
+
 l_print = lambda l, k_list: list(map(lambda k: print(l[k-1][0], l[k-1][1], file=o), k_list))
 
 #print anwser
 o.write('integers:\n')
-l_print(sorted_int, k_list)
+l_print(sorted_int, k_list_int)
 o.write('real:\n')
-l_print(sorted_real, k_list)
+l_print(sorted_real, k_list_real)
 
 
 
