@@ -91,10 +91,12 @@ k_list_real = l_list_asc(int(new_k(k,sorted_real)))
 l_print = lambda l, k_list: list(map(lambda k: print(l[k-1][0], l[k-1][1], file=o), k_list))
 
 #print anwser
-o.write('integers:\n')
-l_print(sorted_int, k_list_int)
-o.write('real:\n')
-l_print(sorted_real, k_list_real)
+if len(sorted_int) > 0:
+    o.write('integers:\n')
+    l_print(sorted_int, k_list_int)
+if len(sorted_real) > 0:
+    o.write('real:\n')
+    l_print(sorted_real, k_list_real)
 
 
 
