@@ -92,7 +92,7 @@ l_print = lambda l, k_list: list(map(lambda k: print(l[k-1][0], l[k-1][1], file=
 
 #print anwser
 if len(sorted_int) > 0:
-    o.write('integers:\n')
+    o.write('integer:\n')
     l_print(sorted_int, k_list_int)
 if len(sorted_real) > 0:
     o.write('real:\n')
